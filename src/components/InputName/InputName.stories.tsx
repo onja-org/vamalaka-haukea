@@ -15,6 +15,7 @@ largeInput.args = {
   placeholder: 'Invictus Innocent',
   label: 'Your full name',
   name: 'large',
+  type: 'email',
 }
 
 export const smallInput = Template.bind({})
@@ -22,4 +23,5 @@ smallInput.args = {
   placeholder: 'Invictus Innocent',
   label: 'Your full name',
   name: 'small',
+  type: 'email',
 }
