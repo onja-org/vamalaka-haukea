@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import styled, { css } from 'styled-components'
 import { fonts } from '../../globalStyles/fonts'
@@ -18,30 +18,14 @@ const inputStyles = css`
   outline: none;
   border: 1px solid #041d42;
   border-radius: 6px;
+  position: relative;
 `
 
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-  .large {
-    max-width: 320px;
-    padding-top: 12px;
-    padding-left: 27px;
-    padding-bottom: 12px;
-    padding-right: 76px;
-    box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
-    ${inputStyles}
-  }
-  .small {
-    max-width: 240px;
-    padding-top: 12px;
-    padding-left: 14px;
-    padding-bottom: 12px;
-    padding-right: 34px;
-    box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
-    ${inputStyles}
-  }
+  width: max-content;
   .labelStyle {
     font-style: normal;
     font-weight: normal;
@@ -57,6 +41,31 @@ const InputContainer = styled.div`
 
 const InputElement = styled.input`
   ${fonts}
+  position: absolute;
+
+  max-width: 240px;
+  padding-top: 12px;
+  padding-left: 14px;
+  padding-bottom: 12px;
+  padding-right: 34px;
+  &:focus {
+    box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
+  }
+
+  ${inputStyles}
+  @media (min-width: 400px ) {
+    max-width: 320px;
+    padding-top: 12px;
+    padding-left: 27px;
+    padding-bottom: 12px;
+    padding-right: 76px;
+    &:focus {
+      box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
+    }
+
+    ${inputStyles}
+  }
+  ${inputStyles}
   font-family: 'Futura Std', Arial, Helvetica, sans-serif;
 
   &::-webkit-input-placeholder {
@@ -74,12 +83,24 @@ const InputElement = styled.input`
     font-family: 'Futura Std', Arial, Helvetica, sans-serif;
   }
 `
+const Button = styled.button`
+  position: absolute;
+  border: none;
+  background: none;
+  cursor: pointer;
+  bottom: 13px;
+  right: 17px;
+  @media (min-width: 400px) {
+    right: 38px;
+  }
+`
 
 export interface InputProps {
   label: string
   placeholder: string
   name: string
   type: string
+  // showPassword: string
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -87,11 +108,26 @@ export const Input: React.FC<InputProps> = ({
   placeholder,
   name,
   type,
+  // showPassword,
 }) => {
+  const [showPassword, setShowpassword] = useState(false)
+
   return (
     <InputContainer>
       <label className='labelStyle'>{label}</label>
-      <InputElement placeholder={placeholder} className={name} type={type} />
+      {name === 'password' ? (
+        <div style={{ position: 'relative' }}>
+          <InputElement
+            placeholder={placeholder}
+            type={showPassword ? 'text' : type}
+          />
+          <Button type='button' onClick={() => setShowpassword(!showPassword)}>
+            show
+          </Button>
+        </div>
+      ) : (
+        <InputElement placeholder={placeholder} type={type} />
+      )}
     </InputContainer>
   )
 }

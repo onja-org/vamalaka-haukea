@@ -16,6 +16,7 @@ largeInput.args = {
   label: 'Your full name',
   name: 'large',
   type: 'email',
+  // showPassword: 'show',
 }
 
 export const smallInput = Template.bind({})
@@ -24,4 +25,5 @@ smallInput.args = {
   label: 'Your full name',
   name: 'small',
   type: 'email',
+  // showPassword: 'show',
 }

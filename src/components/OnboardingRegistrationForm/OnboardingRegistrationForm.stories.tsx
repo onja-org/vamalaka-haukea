@@ -11,29 +11,30 @@ const inputProps = [
   {
     label: 'Your full name',
     placeholder: 'Invictus innocent',
-    name: 'email',
-    type: 'email',
+    name: 'username',
+    type: 'text',
   },
   {
     label: 'Email adress',
     placeholder: 'Enter Email adress',
-    name: 'text',
+    name: 'email',
     type: 'email',
   },
   {
     label: 'Create password',
     placeholder: 'Enter a password',
-    name: 'text',
-    type: 'email',
-  },
-  {
-    label: 'I agree to the terms & condition',
-    placeholder: '',
-    name: 'chexbox',
-    type: 'checkbox',
+    name: 'password',
+    type: 'password',
+    // showPassword: 'show',
   },
 ]
 
+const checkboxProps = {
+  termsLabel: 'I agree to the',
+  serviceTerms: 'terms & conditions',
+  href: '/',
+  isChecked: true,
+}
 const Template: Story<InputProps> = (args) => (
   <OnboardingRegistrationForm {...args} />
 )
@@ -41,4 +42,5 @@ const Template: Story<InputProps> = (args) => (
 export const emailInputForm = Template.bind({})
 emailInputForm.args = {
   inputProps: inputProps,
+  checkboxProps: checkboxProps,
 }
