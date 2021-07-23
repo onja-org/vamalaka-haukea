@@ -13,18 +13,21 @@ const inputProps = [
     placeholder: 'Invictus innocent',
     name: 'username',
     type: 'text',
+    validInput: false,
   },
   {
     label: 'Email adress',
     placeholder: 'Enter Email adress',
     name: 'email',
     type: 'email',
+    validInput: true,
   },
   {
     label: 'Create password',
     placeholder: 'Enter a password',
     name: 'password',
     type: 'password',
+    validInput: true,
     // showPassword: 'show',
   },
 ]

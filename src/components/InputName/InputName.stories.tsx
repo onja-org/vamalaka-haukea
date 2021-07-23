@@ -16,7 +16,7 @@ largeInput.args = {
   label: 'Your full name',
   name: 'large',
   type: 'email',
-  // showPassword: 'show',
+  validInput: true,
 }
 
 export const smallInput = Template.bind({})
@@ -25,5 +25,14 @@ smallInput.args = {
   label: 'Your full name',
   name: 'small',
   type: 'email',
-  // showPassword: 'show',
+  validInput: true,
+}
+
+export const redBorderInput = Template.bind({})
+redBorderInput.args = {
+  placeholder: 'Invictus Innocent',
+  label: 'Your full name',
+  name: 'small',
+  type: 'email',
+  validInput: false,
 }

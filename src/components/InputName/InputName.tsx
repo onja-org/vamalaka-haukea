@@ -5,7 +5,7 @@ import { fonts } from '../../globalStyles/fonts'
 
 const inputStyles = css`
   ${fonts}
-  'Futura Std', Arial, Helvetica, sans-serif
+  font-family:'Futura Std', Arial, Helvetica, sans-serif;
   background: #ffffff;
   font-style: normal;
   font-weight: normal;
@@ -20,12 +20,10 @@ const inputStyles = css`
   border-radius: 6px;
   position: relative;
 `
-
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-  width: max-content;
   .labelStyle {
     font-style: normal;
     font-weight: normal;
@@ -42,8 +40,7 @@ const InputContainer = styled.div`
 const InputElement = styled.input`
   ${fonts}
   position: absolute;
-
-  max-width: 240px;
+  width: -webkit-fill-available;
   padding-top: 12px;
   padding-left: 14px;
   padding-bottom: 12px;
@@ -51,10 +48,8 @@ const InputElement = styled.input`
   &:focus {
     box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
   }
-
   ${inputStyles}
   @media (min-width: 400px ) {
-    max-width: 320px;
     padding-top: 12px;
     padding-left: 27px;
     padding-bottom: 12px;
@@ -62,10 +57,7 @@ const InputElement = styled.input`
     &:focus {
       box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
     }
-
-    ${inputStyles}
   }
-  ${inputStyles}
   font-family: 'Futura Std', Arial, Helvetica, sans-serif;
 
   &::-webkit-input-placeholder {
@@ -100,6 +92,7 @@ export interface InputProps {
   placeholder: string
   name: string
   type: string
+  validInput: boolean
   // showPassword: string
 }
 
@@ -108,26 +101,48 @@ export const Input: React.FC<InputProps> = ({
   placeholder,
   name,
   type,
-  // showPassword,
+  validInput,
 }) => {
   const [showPassword, setShowpassword] = useState(false)
 
   return (
     <InputContainer>
       <label className='labelStyle'>{label}</label>
-      {name === 'password' ? (
-        <div style={{ position: 'relative' }}>
-          <InputElement
-            placeholder={placeholder}
-            type={showPassword ? 'text' : type}
-          />
+      <div style={{ position: 'relative' }}>
+        {!validInput ? (
+          <small
+            style={{
+              color: '#FC462B',
+              display: 'flex',
+              width: 'fit-content',
+              marginLeft: 'auto',
+              fontSize: '16px',
+              lineHeight: '19px',
+              marginBottom: '10px',
+              textTransform: 'capitalize',
+            }}>
+            {name} invalid
+          </small>
+        ) : (
+          ''
+        )}
+        <InputElement
+          style={{
+            border: `1px solid ${validInput ? '#041d42' : '#FC462B'}`,
+            color: `${validInput ? '#041d42' : '#FC462B'}`,
+          }}
+          placeholder={placeholder}
+          type={showPassword ? 'text' : type}
+          name={name}
+        />
+        {name === 'password' ? (
           <Button type='button' onClick={() => setShowpassword(!showPassword)}>
-            show
+            {showPassword ? 'hide' : 'show'}
           </Button>
-        </div>
-      ) : (
-        <InputElement placeholder={placeholder} type={type} />
-      )}
+        ) : (
+          ''
+        )}
+      </div>
     </InputContainer>
   )
 }

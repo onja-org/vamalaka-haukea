@@ -42,6 +42,7 @@ interface ObjType {
   placeholder: string
   name: string
   type: string
+  validInput: boolean
 
   // showPassword: string
 }
@@ -70,6 +71,7 @@ export const OnboardingRegistrationForm: React.FC<InputProps> = ({
             placeholder={prop.placeholder}
             name={prop.name}
             type={prop.type}
+            validInput={prop.validInput}
           />
         ))}
         <TermsAndConditions
