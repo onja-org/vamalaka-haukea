@@ -9,7 +9,7 @@ export interface ButtonProps {
   isPrimary?: boolean
   disabled?: boolean
   isLoading?: boolean
-  icon?: JSX.Element | null
+  icon?: JSX.Element
   onClick?: () => void
 }
 
@@ -51,7 +51,7 @@ const ButtonStyled = styled.button<ButtonProps>`
   outline: none;
   filter: drop-shadow(-3px 3px 0px #A7CBD6) drop-shadow(2px -2px 0px #EDB6AE);
   
-  ${mediaQueriesPx('md', 'xl')`
+  ${mediaQueriesPx('md', null)`
     font-size: 24px;
     line-height: 27px;
     padding: 12px 14px 11px;
@@ -66,7 +66,7 @@ const ButtonStyled = styled.button<ButtonProps>`
   img, svg {
     width: 18px;
     height: 18px;
-    ${mediaQueriesPx('md', 'xl')`
+    ${mediaQueriesPx('md', null)`
       width: 20px;
       height: 20px;
     `}
@@ -92,7 +92,7 @@ const Button: React.FC<ButtonProps> = ({
           onClick={() => ''}
           {...props}>
           {isLoading ? <PendingIndicator size='xs' alt="loading icon"/> : ''}
-          {icon !== null ? icon : ''}
+          {icon ? icon : ''}
           <span>{label}</span>
         </ButtonStyled>
       </SecondWrapper>
