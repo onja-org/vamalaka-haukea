@@ -7,19 +7,18 @@ import { CypressHistorySupport } from 'cypress-react-router'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { history, store } from './redux/store';
-
+import { history, store } from './redux/store'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <CypressHistorySupport />
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
-      </Provider>
-    </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<CypressHistorySupport />
+		<Provider store={store}>
+			<ConnectedRouter history={history}>
+				<App />
+			</ConnectedRouter>
+		</Provider>
+	</React.StrictMode>,
+	document.getElementById('root')
 )
 
 // If you want to start measuring performance in your app, pass a function
