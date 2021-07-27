@@ -87,6 +87,10 @@ const Button = styled.button`
   }
 `
 
+const LabelContainer = styled.div`
+  display: flex;
+`
+
 export interface InputProps {
   label: string
   placeholder: string
@@ -107,24 +111,26 @@ export const Input: React.FC<InputProps> = ({
 
   return (
     <InputContainer>
-      <label className='labelStyle'>{label}</label>
       <div style={{ position: 'relative' }}>
         {!validInput ? (
-          <small
-            style={{
-              color: '#FC462B',
-              display: 'flex',
-              width: 'fit-content',
-              marginLeft: 'auto',
-              fontSize: '16px',
-              lineHeight: '19px',
-              marginBottom: '10px',
-              textTransform: 'capitalize',
-            }}>
-            {name} invalid
-          </small>
+          <LabelContainer>
+            <label className='labelStyle'>{label}</label>
+            <small
+              style={{
+                color: '#FC462B',
+                display: 'flex',
+                width: 'fit-content',
+                marginLeft: 'auto',
+                fontSize: '16px',
+                lineHeight: '19px',
+                marginBottom: '10px',
+                textTransform: 'capitalize',
+              }}>
+              {name} invalid
+            </small>
+          </LabelContainer>
         ) : (
-          ''
+          <label className='labelStyle'>{label}</label>
         )}
         <InputElement
           style={{

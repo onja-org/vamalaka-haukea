@@ -21,14 +21,13 @@ const SecondWrapper = styled.div`
   left: -6px;
 `
 const Button = styled.button<ButtonsProps>`
- ${fonts}
+  ${fonts}
   @font-face {
     font-family: 'Garamond';
-    src: local('Garamond'), local('Garamond'),
+    src: local('Garamond'), local('Garamond');
     font-weight: 400;
     font-style: normal;
   }
-
   position: absolute;
   top: -3px;
   left: 3px;
@@ -43,7 +42,7 @@ const Button = styled.button<ButtonsProps>`
   padding: ${(props) =>
     props.learnEnabled ? '12px 20px 11px 20px' : '12px 28px 11px 28px'};
   border: ${(props) => (props.learnEnabled ? 'none' : '2px solid #041d42')};
-    props.learnEnabled ? '12px 20px 11px 20px' : '12px 28px 11px 28px'};
+  /* props.learnEnabled ? '12px 20px 11px 20px' : '12px 28px 11px 28px'}; */
   cursor: pointer;
 
   &:disabled {
