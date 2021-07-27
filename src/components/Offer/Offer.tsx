@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styled, { css } from 'styled-components'
-import Buttons from '../Buttons/Buttons'
+import Button from '../Button/Button'
 import { DescriptionOffer } from '../DescriptionOffer/descriptionOffer'
 import { HeaderOfOffer } from '../HeaderOfOffer/HeaderOfOffer'
 import { ImageWithinOffer } from '../ImageWithinOffer/ImageWithinOffer'
@@ -179,10 +179,10 @@ export const Offer: React.FC<OfferProps> = ({
         <SellerPreviewInfo image={profile} name={name} location={location} />
         <DescriptionOffer text={offerDescription} />
         <div className='buttonContainer'>
-          <Buttons learnEnabled={isLearnEnabled} label={detailButtonText} />
+          <Button isPrimary={isLearnEnabled} label={detailButtonText} />
           <button className='favoriteButton'>{outlineHeart}</button>
           <div className='favoriteButtonContainer'>
-            <Buttons label={favoriteButtonText} />
+            <Button label={favoriteButtonText} />
           </div>
         </div>
       </div>
