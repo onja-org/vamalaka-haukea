@@ -13,7 +13,6 @@ LearnEnabled.args = {
   isPrimary: true,
   label: 'Learn more',
   isLoading: false,
-  icon: null,
 }
 
 export const LearnLoading = Template.bind({})
@@ -21,7 +20,6 @@ LearnLoading.args = {
   isPrimary: true,
   label: 'Learn more',
   isLoading: true,
-  icon: null,
 }
 export const Learndisabled = Template.bind({})
 Learndisabled.args = {
@@ -29,14 +27,12 @@ Learndisabled.args = {
   disabled: true,
   label: 'Learn more',
   isLoading: false,
-  icon: null,
 }
 export const Autoformat = Template.bind({})
 Autoformat.args = {
   isPrimary: false,
   label: 'Can you trust us?',
   isLoading: false,
-  icon: null,
 }
 
 export const AutoformatWithIcon = Template.bind({})

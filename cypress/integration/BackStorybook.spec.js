@@ -1,7 +1,7 @@
 describe('Storybook Components', () => {
   beforeEach('visits storybook', () => {
     cy.visit('http://localhost:6006')
-    cy.contains('Back', { timeout: 20000 })
+    cy.contains('Back', { timeout: 40000 })
   })
   it('Has the Back component', () => {
     cy.contains('Back')

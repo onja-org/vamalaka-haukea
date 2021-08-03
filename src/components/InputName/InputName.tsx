@@ -5,7 +5,7 @@ import { fonts } from '../../globalStyles/fonts'
 
 const inputStyles = css`
   ${fonts}
-  'Futura Std', Arial, Helvetica, sans-serif
+  font-family: 'Futura Std', Arial, Helvetica, sans-serif;
   background: #ffffff;
   font-style: normal;
   font-weight: normal;
