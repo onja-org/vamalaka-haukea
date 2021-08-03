@@ -25,18 +25,18 @@ export const CategoryItem: React.FC<CategoryItemProp> = ({
 const Button = styled.button`
   ${fonts}
   font-family: 'Futura Std', Arial, Helvetica, sans-serif;
-  width: 100%;
-  cursor: pointer;
-  margin-left: 0;
-  font-size: 18px;
-  padding: 8px 0 8px 0;
-  max-width: 214px;
+  font-size: 30px;
   font-weight: normal;
+  margin-left: 0;
+  padding: 8px 0 8px 0;
+  width: 100%;
+  min-width: 214px;
   box-sizing: border-box;
   border: 0.5px solid #158cb1;
+  line-height: 36px;
+  cursor: pointer;
 
   @media (min-width: 600px) {
-    font-size: 24px;
     padding: 11px 0 11px 0;
   }
 `
