@@ -8,11 +8,21 @@ export interface CategoryListProps {
   selectCategory: () => void
 }
 
-const CategoryListContainer = styled.ul`
+const CategoryListContainer = styled.div`
+  overflow-x: hidden;
+  overflow-y: hidden;
+`
+const CategoryListStyle = styled.ul`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  width: 100%;
   gap: 15px;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+}
 `
 
 export const CategoryList: React.FC<CategoryListProps> = ({
@@ -22,6 +32,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({
 }) => {
   return (
     <CategoryListContainer>
+      <CategoryListStyle>
       {categories.map((category: { id: string | number; title: string }) => (
         <CategoryItem
           key={category.id}
@@ -30,6 +41,7 @@ export const CategoryList: React.FC<CategoryListProps> = ({
           selectCategory={selectCategory}
         />
       ))}
+    </CategoryListStyle>
     </CategoryListContainer>
   )
 }

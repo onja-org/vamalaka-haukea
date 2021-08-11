@@ -2,6 +2,7 @@ import { Header } from '../Header'
 import { PageFooter } from '../PageFooter/PageFooter'
 import { loggedIn } from '../HeaderNavLink/HeaderNavLink'
 import styled from 'styled-components'
+import { mediaQueriesPx } from '../../mediaQueries'
 
 const footerLinks = [
 	{
@@ -64,32 +65,38 @@ export interface ContainerProps {
 
 export const CommonPageContainer: React.FC<ContainerProps> = ({ children }) => {
 	return (
-		<div>
+		<PageContainer>
 			<Header item={loggedIn} />
 			<Container>{children}</Container>
 			<FooterContainer>
 				<PageFooter footerLinks={footerLinks} />
 			</FooterContainer>
-		</div>
+		</PageContainer>
 	)
 }
+const PageContainer = styled.div`
+	& > header, main {
+		max-width: 1360px;
+    	margin: auto;
+	}
+`;
 
 const Container = styled.div`
-	padding: 0 16px;
+	margin: 0 16px;
+	${mediaQueriesPx('xl', null)`
+		margin: 0 42px;
+	`}
+
 `
 const FooterContainer = styled.div`
 	footer > div {
-		max-width: 90%;
 		margin: auto;
 	}
 
 	@media (max-width: 920px) {
-		footer > div > * {
-			display: none;
-		}
 
 		footer > div {
-			padding: 0;
+			// padding: 0;
 			min-height: 184px;
 		}
 	}
