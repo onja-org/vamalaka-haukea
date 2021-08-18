@@ -5,11 +5,10 @@ import { mediaQueriesPx } from "../mediaQueries";
 import { CommonPageContainer } from "../components/CommonPageContainer/CommonPageContainer";
 import LearnMoreBanner from "../components/LearnMoreBanner/LearnMoreBanner";
 import ImageBanner from '../stories/assets/banner.png';
-import { CategoryList } from "../components/CategoryList/CategoryList";
-import PendingIndicator from "../components/PendingIndicator/PendingIndicator";
 import {Offer} from "../components/Offer/Offer";
 import Image from '../stories/assets/offer.svg';
 import SellerPrevImage from '../stories/assets/seller-prev-img.png';
+import { TopCategories } from "../components/TopCategories/TopCategories";
 import { CallToAction } from "../components/CallToAction/CallToAction";
 
 import { useSelector} from 'react-redux';
@@ -103,24 +102,17 @@ const offers = [
 export default function HomePage() {
 
   const dispatch = useAppDispatch();
-	const categories = useSelector(categoriesSelector);
+  const categories = useSelector(categoriesSelector);
   const status = useSelector(statusSelector);
-	useEffect(() => {
-		dispatch(fetchCategories([]))
-	}, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchCategories([]))
+  }, [dispatch]);
 
   return (
         <CommonPageContainer>
             <Main>
                 <LearnMoreBanner bannerHeading="Madagascars peer-to-peer e-commerce platform" bannerDescription = "Purchase high-quality products made by the people that sell them. By cutting out middlemen, you know exactly where your purchase is from and how it was made." bannerImage={ImageBanner} />
-                <CategoryLabel>Top Categories</CategoryLabel>
-                {status === 'loading'
-                ?
-                  <PendingIndicator alt='PendingSmallIcon' size= 's'/>
-                : 
-                  <CategoryList categories={categories} primary={true} selectCategory={() => {}}/>
-                }
-                <Separator/>
+                <TopCategories categories={categories} status={status} heading="Top Categories"/>
                 <OfferList>
                   {offers.map(offer => {
                     return <Offer key={offer.id} 
@@ -156,6 +148,13 @@ const Main = styled.main`
   justify-content: center;
   padding-bottom: 318px;
 
+  & > div:first-of-type {
+    margin-top: 43px;
+    margin-bottom: 13px;
+    ${mediaQueriesPx('lg', null)`
+      margin-top: 124px;
+    `}
+  }
   & > div:last-of-type {
     position: absolute;
     -webkit-transform: translateX(-50%);
@@ -176,26 +175,8 @@ const Main = styled.main`
       margin-top: 144px;
     `}
   }
-
-  & > img {
-    display: flex;
-    left: 50%;
-    margin: auto;
-  }
 `;
-const CategoryLabel = styled.h3`
-  font-family: Futura Std;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 36px;
-  color: #041d42;
-  margin-top: 43px;
-  margin-bottom: 13px;
-  ${mediaQueriesPx('lg', null)`
-    margin-top: 124px;
-  `}
-`
+
 const OfferList = styled.div`
   margin-top: 39px;
   display: flex;
@@ -203,14 +184,5 @@ const OfferList = styled.div`
   gap: 12px;
   ${mediaQueriesPx('lg', null)`
     margin-top: 30px;
-  `}
-`
-const Separator = styled.hr`
-  display: none;
-  margin: 0;
-  margin-top: 25px;
-  ${mediaQueriesPx('lg', null)`
-    border-top: 1px solid #041D42;
-    display: block;
   `}
 `
