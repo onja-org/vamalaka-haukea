@@ -1,20 +1,20 @@
-import styled from 'styled-components'
-import { CommonPageContainer } from '../components/CommonPageContainer/CommonPageContainer'
-import LearnMoreBanner from '../components/LearnMoreBanner/LearnMoreBanner'
-import ImageBanner from '../stories/assets/banner.png'
-import { CategoryList } from '../components/CategoryList/CategoryList'
-import { Offer } from '../components/Offer/Offer'
-import Image from '../stories/assets/offer.svg'
-import SellerPrevImage from '../stories/assets/seller-prev-img.png'
-import { mediaQueriesPx } from '../mediaQueries'
-import { CallToAction } from '../components/CallToAction/CallToAction'
-const categories = [
-  { id: '1', title: 'Food' },
-  { id: '2', title: 'Handmade' },
-  { id: '3', title: 'Spices' },
-  { id: '4', title: 'Collectibles' },
-  { id: '5', title: 'Everything' },
-]
+import styled from "styled-components";
+import { useEffect } from "react";
+import { mediaQueriesPx } from "../mediaQueries";
+
+import { CommonPageContainer } from "../components/CommonPageContainer/CommonPageContainer";
+import LearnMoreBanner from "../components/LearnMoreBanner/LearnMoreBanner";
+import ImageBanner from '../stories/assets/banner.png';
+import { CategoryList } from "../components/CategoryList/CategoryList";
+import PendingIndicator from "../components/PendingIndicator/PendingIndicator";
+import {Offer} from "../components/Offer/Offer";
+import Image from '../stories/assets/offer.svg';
+import SellerPrevImage from '../stories/assets/seller-prev-img.png';
+import { CallToAction } from "../components/CallToAction/CallToAction";
+
+import { useSelector} from 'react-redux';
+import { useAppDispatch } from '../redux/hooks';
+import { categoriesSelector, fetchCategories, statusSelector } from '../redux/slices/categoriesSlice';
 
 const offers = [
   {
@@ -101,54 +101,52 @@ const offers = [
 ]
 
 export default function HomePage() {
+
+  const dispatch = useAppDispatch();
+	const categories = useSelector(categoriesSelector);
+  const status = useSelector(statusSelector);
+	useEffect(() => {
+		dispatch(fetchCategories([]))
+	}, [dispatch]);
+
   return (
-    <CommonPageContainer>
-      <Main>
-        <LearnMoreBanner
-          bannerHeading='Madagascars peer-to-peer e-commerce platform'
-          bannerDescription='Purchase high-quality products made by the people that sell them. By cutting out middlemen, you know exactly where your purchase is from and how it was made.'
-          bannerImage={ImageBanner}
-        />
-        <CategoryLabel>Top Categories</CategoryLabel>
-        <CategoryList
-          categories={categories}
-          primary={true}
-          selectCategory={() => {}}
-        />
-        <Separator />
-        <OfferList>
-          {offers.map((offer) => {
-            return (
-              <Offer
-                key={offer.id}
-                imageForOffer={Image}
-                imageDescription={offer.imageDescription}
-                imageForRating=''
-                offerName={offer.offerName}
-                currency={offer.currency}
-                amount={offer.amount}
-                unit={offer.unit}
-                star={offer.star}
-                ratingDescription={offer.ratingDescription}
-                amountOfProduct={offer.amountOfProduct}
-                offerDescription={offer.offerDescription}
-                isLearnEnabled={offer.isLearnEnabled}
-                isFavourited={offer.isFavourited}
-                detailButtonText={offer.detailButtonText}
-                favoriteButtonText={offer.favoriteButtonText}
-                profile={offer.profile}
-                name={offer.name}
-                location={offer.location}
-              />
-            )
-          })}
-        </OfferList>
-        <CallToAction
-          title='Discover amazing products and profit from a truly fair market:'
-          subTitle='This is a subtitle that is very informative'
-        />
-      </Main>
-    </CommonPageContainer>
+        <CommonPageContainer>
+            <Main>
+                <LearnMoreBanner bannerHeading="Madagascars peer-to-peer e-commerce platform" bannerDescription = "Purchase high-quality products made by the people that sell them. By cutting out middlemen, you know exactly where your purchase is from and how it was made." bannerImage={ImageBanner} />
+                <CategoryLabel>Top Categories</CategoryLabel>
+                {status === 'loading'
+                ?
+                  <PendingIndicator alt='PendingSmallIcon' size= 's'/>
+                : 
+                  <CategoryList categories={categories} primary={true} selectCategory={() => {}}/>
+                }
+                <Separator/>
+                <OfferList>
+                  {offers.map(offer => {
+                    return <Offer key={offer.id} 
+                      imageForOffer ={Image}
+                      imageDescription = {offer.imageDescription}
+                      imageForRating=''
+                      offerName= {offer.offerName}
+                      currency= {offer.currency}
+                      amount={offer.amount}
+                      unit= {offer.unit}
+                      star= {offer.star}
+                      ratingDescription = {offer.ratingDescription}
+                      amountOfProduct={offer.amountOfProduct}
+                      offerDescription={offer.offerDescription}
+                      isLearnEnabled={offer.isLearnEnabled}
+                      isFavourited= {offer.isFavourited}
+                      detailButtonText= {offer.detailButtonText}
+                      favoriteButtonText= {offer.favoriteButtonText}
+                      profile= {offer.profile}
+                      name={offer.name}
+                      location={offer.location}/>
+                    })}
+                </OfferList>
+                <CallToAction title="Discover amazing products and profit from a truly fair market:" subTitle="This is a subtitle that is very informative"/>
+            </Main>
+        </CommonPageContainer>
   )
 }
 
@@ -178,7 +176,13 @@ const Main = styled.main`
       margin-top: 144px;
     `}
   }
-`
+
+  & > img {
+    display: flex;
+    left: 50%;
+    margin: auto;
+  }
+`;
 const CategoryLabel = styled.h3`
   font-family: Futura Std;
   font-style: normal;

@@ -75,12 +75,20 @@ export const CommonPageContainer: React.FC<ContainerProps> = ({ children }) => {
   )
 }
 const PageContainer = styled.div`
-  & > header,
-  main {
-    max-width: 1360px;
-    margin: auto;
-  }
-`
+	& > header h1 {
+		margin-left: 14px;
+		${mediaQueriesPx('lg', null)`
+			margin-left: 25px;
+		`}
+	}
+	& > header ul {
+		margin-right: 15px;
+	}
+	& > header, main {
+		max-width: 1360px;
+    	margin: auto;
+	}
+`;
 
 const Container = styled.div`
   margin: 0 16px;

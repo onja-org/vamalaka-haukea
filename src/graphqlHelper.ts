@@ -11,3 +11,9 @@ export const getAdsQuery = () => {
           ads{title, createdAt, id, username,comments{body, id, username}}
       }`;
 };
+
+export const getCategoriesQuery = () => {
+  return `{
+        categories{id, description, title}
+      }`;
+};
