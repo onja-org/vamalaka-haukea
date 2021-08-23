@@ -11,10 +11,9 @@ import { Route, Switch } from 'react-router-dom'
 // import { useAppSelector, useAppDispatch } from './redux/hooks'
 import HomePage from './Pages/HomePage'
 import SignIn from './Pages/SignIn'
-import { RoleSelectOnboard } from './components/RoleSelectOnboard/RoleSelectOnboard'
+import SignUp from './Pages/SingUp'
 import Transactions from './Pages/Transactions'
 import NotFound from './Pages/NotFound'
-//import OnboardingPage from './Pages/OnboardingPage'
 
 function App() {
   // const count = useAppSelector((state) => state.ads.value)
@@ -23,9 +22,9 @@ function App() {
   return (
     <Switch>
       <Route exact path='/' component={HomePage} />
-      <Route exact path='/signin' component={SignIn} />
+      <Route exact path='/login' component={SignIn} />
       <Route exact path='/transactions' component={Transactions} />
-      <Route exact path='/signup' component={RoleSelectOnboard} />
+      <Route exact path='/signup' component={SignUp} />
       <Route component={NotFound} />
     </Switch>
   )

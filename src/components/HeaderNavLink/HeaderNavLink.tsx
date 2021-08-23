@@ -35,11 +35,11 @@ export const loggedOut = [
 	{
 		imgSrc: signIn,
 		alt: 'Log in',
-		text: 'Log in'
+		text: 'login'
 	},
 	{
 		imgSrc: signUp,
-		alt: 'signup',
+		alt: 'Sign up',
 		text: 'signup'
 	}
 ]
@@ -57,7 +57,7 @@ export const HeaderNavLink: FC<ItemType> = ({ text, imgSrc, alt }) => (
 		<Item>
 			<Link to={`/${text}`} data-testid={text}>
 				<img src={imgSrc} alt={alt} />
-				<span>{text}</span>
+				<span>{alt}</span>
 			</Link>
 		</Item>
 )

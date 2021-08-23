@@ -1,64 +1,13 @@
-import { RoleSelectOnboard } from '../components/RoleSelectOnboard/RoleSelectOnboard'
+import { CommonPageContainer } from "../components/CommonPageContainer/CommonPageContainer";
+export interface OnboardProperties {
+  children: JSX.Element
+}
 
-const footerLinks = [
-    {
-      summary: 'Madamada',
-      links: [
-        { linkContent: 'about', linkUrl: '#about' },
-        { linkContent: 'careers', linkUrl: '#careers' },
-        { linkContent: 'pricing', linkUrl: '#pricing' },
-        { linkContent: 'FAQ', linkUrl: '#faq' },
-      ],
-      id: '1',
-    },
-    {
-      summary: 'Madamada',
-      links: [
-        { linkContent: 'about', linkUrl: '#about' },
-        { linkContent: 'careers', linkUrl: '#careers' },
-        { linkContent: 'pricing', linkUrl: '#pricing' },
-        { linkContent: 'FAQ', linkUrl: '#faq' },
-      ],
-      id: '2',
-    },
-    {
-      summary: 'Madamada',
-      links: [
-        { linkContent: 'about', linkUrl: '#about' },
-        { linkContent: 'careers', linkUrl: '#careers' },
-        { linkContent: 'pricing', linkUrl: '#pricing' },
-        { linkContent: 'FAQ', linkUrl: '#faq' },
-      ],
-      id: '3',
-    },
-    {
-      summary: 'Madamada',
-      links: [
-        { linkContent: 'about', linkUrl: '#about' },
-        { linkContent: 'careers', linkUrl: '#careers' },
-        { linkContent: 'pricing', linkUrl: '#pricing' },
-        { linkContent: 'FAQ', linkUrl: '#faq' },
-      ],
-      id: '4',
-    },
-    {
-      summary: 'Madamada',
-      links: [
-        { linkContent: 'about', linkUrl: '#about' },
-        { linkContent: 'careers', linkUrl: '#careers' },
-        { linkContent: 'pricing', linkUrl: '#pricing' },
-        { linkContent: 'FAQ', linkUrl: '#faq' },
-      ],
-      id: '5',
-    },
-]
-
-
-function OnboardingPage() {
+const OnboardingPage: React.FC<OnboardProperties> = ({children}) => {
   return (
-    <>
-      <RoleSelectOnboard footerLinks={footerLinks}/>
-    </>
+    <CommonPageContainer>
+      {children}
+    </CommonPageContainer>
   )
 }
 

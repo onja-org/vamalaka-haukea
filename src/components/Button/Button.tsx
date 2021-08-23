@@ -17,7 +17,6 @@ export interface ButtonProps {
 const FirstWrapper = styled.div`
   display: inline-block;
   position: relative;
-  background: rgba(252, 70, 43, 0.3);
 `
 const SecondWrapper = styled.div`
   display: inline-block;
@@ -46,7 +45,7 @@ const ButtonStyled = styled.button<ButtonProps>`
   color: ${(props) => (props.isPrimary ? '#FFFFFF' : '#041d42')};
   background-color: ${(props) => (props.isPrimary ? '#041d42' : '#FFFFFF')};
   padding: 9px 14px 8px;
-  border: ${(props) => (props.isPrimary ? 'none' : '2px solid #041d42')};
+  border: 2px solid #041D42};
   cursor: pointer;
   outline: none;
   filter: drop-shadow(-3px 3px 0px #a7cbd6) drop-shadow(2px -2px 0px #edb6ae);

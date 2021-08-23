@@ -3,9 +3,72 @@ import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import { fonts } from '../../globalStyles/fonts'
 
+export interface InputProps {
+  label: string
+  placeholder: string
+  inputName?: string
+  inputType: string
+  isValid: boolean
+  prop?: boolean
+}
+
+interface styledPropType {
+  errorMessage: boolean
+}
+
+export const Input: React.FC<InputProps> = ({
+  label,
+  placeholder,
+  inputName,
+  inputType,
+  isValid,
+}) => {
+  const [showPassword, setShowpassword] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+
+  function inputValueHandler(e: string) {
+    setInputValue(e);
+  }
+  return (
+    <InputContainer>
+      <div style={{ position: 'relative' }}>
+      
+        <LabelContainer>
+          <Label>{label}</Label>
+          {!isValid && 
+          <ErrorMessage>
+            {inputName} invalid
+          </ErrorMessage>}
+        </LabelContainer>
+        
+        <InputElement
+          value={inputValue}
+          placeholder={placeholder}
+          type={showPassword ? 'text' : inputType}
+          name={inputName}
+          onChange={(e: any) => inputValueHandler(e.target.value)}
+          errorMessage={!isValid}
+          autoComplete='off'
+          required
+        />
+        {inputName === 'password' ? (
+          <Button errorMessage={!isValid} type='button' onClick={() => setShowpassword(!showPassword)}>
+            {showPassword ? 'hide' : 'show'}
+          </Button>
+        ) : (
+          ''
+        )}
+      </div>
+    </InputContainer>
+  )
+}
+
+export default Input
+
+
 const inputStyles = css`
   ${fonts}
-  font-family: 'Futura Std', Arial, Helvetica, sans-serif;
+  font-family:'Futura Std', Arial, Helvetica, sans-serif;
   background: #ffffff;
   font-style: normal;
   font-weight: normal;
@@ -23,9 +86,7 @@ const inputStyles = css`
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
 `
-
 const Label = styled.label`
   font-style: normal;
   font-weight: normal;
@@ -33,23 +94,33 @@ const Label = styled.label`
   line-height: 19px;
   display: flex;
   color: #979797;
-  padding-bottom: 6px;
   align-items: start;
   font-family: 'Futura Std', Arial, Helvetica, sans-serif;
-`
+`;
 
-const InputElement = styled.input`
+const ErrorMessage = styled.small`
+  color: #FC462B;
+  font-size: 16px;
+  line-hight: 19px;
+  text-transform: capitalize;
+`;
+
+const InputElement = styled.input<styledPropType>`
   ${fonts}
+
   position: absolute;
   width: -webkit-fill-available;
   padding-top: 12px;
   padding-left: 14px;
   padding-bottom: 12px;
   padding-right: 34px;
+  ${inputStyles}
+  border: 1px solid ${({errorMessage}) => errorMessage ? '#FC462B' : '#041d42'};
+  color: ${({errorMessage}) => errorMessage ? '#FC462B' : '#041d42'};
   &:focus {
     box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
   }
-  ${inputStyles}
+
   @media (min-width: 400px ) {
     padding-top: 12px;
     padding-left: 27px;
@@ -60,29 +131,27 @@ const InputElement = styled.input`
     }
   }
   font-family: 'Futura Std', Arial, Helvetica, sans-serif;
-
   &::-webkit-input-placeholder {
     ${fonts}
     font-family: 'Futura Std', Arial, Helvetica, sans-serif;
   }
-
   &:-ms-input-placeholder {
     ${fonts}
     font-family: 'Futura Std', Arial, Helvetica, sans-serif;
   }
-
   &::placeholder {
     ${fonts}
     font-family: 'Futura Std', Arial, Helvetica, sans-serif;
   }
 `
-const Button = styled.button`
+const Button = styled.button<styledPropType>`
   position: absolute;
   border: none;
   background: none;
   cursor: pointer;
   bottom: 13px;
   right: 17px;
+  color: ${({errorMessage}) => errorMessage ? '#FC462B' : '#041d42'};
   @media (min-width: 400px) {
     right: 38px;
   }
@@ -90,74 +159,6 @@ const Button = styled.button`
 
 const LabelContainer = styled.div`
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 `
-
-const InputWrapper = styled.div`
-  position: relative;
-`
-const Small = styled.small`
-  color: '#FC462B',
-  display: 'flex',
-  width: 'fit-content',
-  marginLeft: 'auto',
-  fontSize: '16px',
-  lineHeight: '19px',
-  marginBottom: '10px',
-  textTransform: 'capitalize',
-`
-
-export interface InputProps {
-  label: string
-  placeholder: string
-  name: string
-  type: string
-  validInput: boolean
-  inputValue: string
-  onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
-  errorMessage?: string
-}
-
-export const Input: React.FC<InputProps> = ({
-  label,
-  placeholder,
-  name,
-  type,
-  validInput,
-  inputValue,
-}) => {
-  const [showPassword, setShowpassword] = useState(false)
-
-  return (
-    <InputContainer>
-      <InputWrapper>
-        {!validInput ? (
-          <LabelContainer>
-            <Label>{label}</Label>
-            <Small>{name} invalid</Small>
-          </LabelContainer>
-        ) : (
-          <Label>{label}</Label>
-        )}
-        <InputElement
-          style={{
-            border: `1px solid ${validInput ? '#041d42' : '#FC462B'}`,
-            color: `${validInput ? '#041d42' : '#FC462B'}`,
-          }}
-          placeholder={placeholder}
-          type={showPassword ? 'text' : type}
-          name={name}
-          value={inputValue}
-        />
-        {name === 'password' ? (
-          <Button type='button' onClick={() => setShowpassword(!showPassword)}>
-            {showPassword ? 'hide' : 'show'}
-          </Button>
-        ) : (
-          ''
-        )}
-      </InputWrapper>
-    </InputContainer>
-  )
-}
-
-export default Input

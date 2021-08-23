@@ -1,16 +1,8 @@
-import { Link } from "react-router-dom"
-import styled from "styled-components"
+import OnboardingPage from './OnboardingPage';
+import { RoleSelectOnboard } from '../components/RoleSelectOnboard/RoleSelectOnboard'
 
 export default function SignUp() {
   return (
-    <SignUpWrapper>
-      <h2>I am the sign up page</h2>
-      <Link to='/'>Go home</Link>
-    </SignUpWrapper>
+    <OnboardingPage children ={<RoleSelectOnboard/>}/>
   )
 }
-
-const SignUpWrapper = styled.div`
-  display: grid;
-  place-items: center;
-`

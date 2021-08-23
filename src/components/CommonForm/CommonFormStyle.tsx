@@ -22,8 +22,13 @@ export const FormMainContainer = styled.div`
 export const FormMainWrapper = styled.div`
   font-family: 'Futura Std', Arial, Helvetica, sans-serif;
   font-style: normal;
-  background-color: #fff;
-  max-width: 583px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 426px;
+  min-height: inherit;
+  
   ${mediaQueriesPx(null, 'sm')`
    width: 100%;
   `}
@@ -34,6 +39,7 @@ export const FormMainWrapper = styled.div`
   ${mediaQueriesPx('lg', null)`
     padding-top: 18px;
     flex: 50%;
+    height: 100%;
   `}
 `
 
@@ -128,3 +134,17 @@ export const FormHeading = styled.h2`
    display: block;
   `}
 `
+
+export const LoginOptions = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 34px;
+  ${mediaQueriesPx('lg', null)`
+    flex-direction: row;
+    margin-bottom: unset;
+    gap: 26px;
+  `}
+`;
+
