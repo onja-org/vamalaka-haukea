@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { fonts } from '../../globalStyles/fonts'
 import PendingIndicator from '../PendingIndicator/PendingIndicator'
-import { mediaQueriesPx } from "../../mediaQueries";
+import { mediaQueriesPx } from '../../mediaQueries'
 
 export interface ButtonProps {
   label?: string
@@ -10,6 +10,7 @@ export interface ButtonProps {
   disabled?: boolean
   isLoading?: boolean
   icon?: JSX.Element
+  type: 'button' | 'submit' | 'reset'
   onClick?: () => void
 }
 
@@ -37,7 +38,6 @@ const ButtonStyled = styled.button<ButtonProps>`
     font-style: normal;
   }
 
-  font-family: 'Garamond';
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -49,21 +49,22 @@ const ButtonStyled = styled.button<ButtonProps>`
   border: ${(props) => (props.isPrimary ? 'none' : '2px solid #041d42')};
   cursor: pointer;
   outline: none;
-  filter: drop-shadow(-3px 3px 0px #A7CBD6) drop-shadow(2px -2px 0px #EDB6AE);
-  
+  filter: drop-shadow(-3px 3px 0px #a7cbd6) drop-shadow(2px -2px 0px #edb6ae);
+
   ${mediaQueriesPx('md', null)`
     font-size: 24px;
     line-height: 27px;
     padding: 12px 14px 11px;
   `}
-  
+
   &:disabled {
     color: '#FFFFFF';
     cursor: not-allowed;
     background-color: gray;
   }
 
-  img, svg {
+  img,
+  svg {
     width: 18px;
     height: 18px;
     ${mediaQueriesPx('md', null)`
@@ -89,9 +90,8 @@ const Button: React.FC<ButtonProps> = ({
           type='button'
           isPrimary={isPrimary ? true : false}
           disabled={disabled}
-          onClick={() => ''}
-          {...props}>
-          {isLoading ? <PendingIndicator size='xs' alt="loading icon"/> : ''}
+          onClick={() => ''}>
+          {isLoading ? <PendingIndicator size='xs' alt='loading icon' /> : ''}
           {icon ? icon : ''}
           <span>{label}</span>
         </ButtonStyled>

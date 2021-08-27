@@ -7,6 +7,7 @@ import { ImageWithinOffer } from '../ImageWithinOffer/ImageWithinOffer'
 import { PriceOfOffer } from '../PriceOfOffer/PriceOfOffer'
 import { Rating } from '../rating/Rating'
 import { SellerPreviewInfo } from '../SellerPreviewInfo/SellerPreviewInfo'
+import { mediaQueriesPx } from '../../mediaQueries'
 
 const flexLayout = css`
   display: flex;
@@ -17,86 +18,82 @@ const flexLayout = css`
 const OfferStyle = styled.div`
   background-color: #ffffff;
   max-width: 225px;
-  .buttonContainer {
-    ${flexLayout}
-    justify-content: space-between;
 
-    button {
-      padding: 8px 18px;
-      font-size: 16px;
-    }
-
-    .favoriteButton {
-      display: block;
-      background-color: transparent;
-      border: none;
-
-      &:focus {
-        outline: none;
-      }
-      @media (min-width: 1114px) {
-        display: none;
-      }
-    }
-    .favoriteButtonContainer {
-      display: none;
-      @media (min-width: 1114px) {
-        display: block;
-      }
-
-      button {
-        padding: 6px 10px;
-      }
-    }
-
-    @media (min-width: 1114px) {
-      padding-bottom: 5px;
-      max-width: 90%;
-    }
-  }
-
-  .offerDetails {
-    margin-left: 9px;
-    h3 {
-      margin-left: -9px;
-      padding-left: 9px;
-      transform: translateY(-26px);
-      background-color: #fff;
-      width: fit-content;
-
-      @media (min-width: 1114px) {
-        transform: translateY(14px);
-        font-size: 30px;
-      }
-    }
-  }
-
-  .productDetails {
-    ${flexLayout}
-    gap: 11.5px;
-
-    @media (min-width: 1114px) {
-      gap: 15.75px;
-    }
-  }
-
-  .ratingContainer {
-    ${flexLayout}
-    gap: 4.19px;
-
-    @media (min-width: 1114px) {
-      gap: 7.5px;
-    }
-  }
-
-  @media (min-width: 1114px) {
-    ${flexLayout}
+  ${mediaQueriesPx('lg', null)`
+    padding-bottom: 5px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     max-width: 422px;
     padding-left: 3px;
     padding-right: 11px;
     box-shadow: 0px 4px 50px -8px rgba(21, 140, 177, 0.3);
+      `}
+`
+
+const ButtonContainer = styled.div`
+  ${flexLayout}
+  justify-content: space-between;
+  button {
+    padding: 8px 18px;
+    font-size: 16px;
   }
+`
+
+const FavoriteButtonContainer = styled.div`
+  display: none;
+  ${mediaQueriesPx('lg', null)`
+        display: block;
+      `}
+
+  button {
+    padding: 6px 10px;
+  }
+`
+
+const RatingContainer = styled.div`
+  ${flexLayout}
+  gap: 4.19px;
+  ${mediaQueriesPx('lg', null)`
+         gap: 7.5px;
+      `}
+`
+
+const OfferDetails = styled.div`
+  margin-left: 9px;
+  h3 {
+    margin-left: -9px;
+    padding-left: 9px;
+    transform: translateY(-26px);
+    background-color: #fff;
+    width: fit-content;
+    padding-bottom: 5px;
+    ${mediaQueriesPx('lg', null)`
+        transform: translateY(14px);
+        font-size: 30px;
+      `}
+  }
+`
+const ProductDetails = styled.div`
+  ${flexLayout}
+  gap: 11.5px;
+  ${mediaQueriesPx('lg', null)`
+        gap: 15.75px;
+      `}
+`
+const FavoriteButton = styled.button`
+  display: block;
+  background-color: transparent;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+  ${mediaQueriesPx('lg', null)`
+        display: none;
+      `}
 `
 
 export interface OfferProps {
@@ -166,26 +163,30 @@ export const Offer: React.FC<OfferProps> = ({
   return (
     <OfferStyle>
       <ImageWithinOffer src={imageForOffer} alt={imageDescription} />
-      <div className='offerDetails'>
+      <OfferDetails>
         <HeaderOfOffer name={offerName} />
 
-        <div className='productDetails'>
+        <ProductDetails>
           <PriceOfOffer currency={currency} value={amount} unit={unit} />
-          <div className='ratingContainer'>
+          <RatingContainer>
             <Rating star={star} alt={ratingDescription} />
             <span>({amountOfProduct})</span>
-          </div>
-        </div>
+          </RatingContainer>
+        </ProductDetails>
         <SellerPreviewInfo image={profile} name={name} location={location} />
         <DescriptionOffer text={offerDescription} />
-        <div className='buttonContainer'>
-          <Button isPrimary={isLearnEnabled} label={detailButtonText} />
-          <button className='favoriteButton'>{outlineHeart}</button>
-          <div className='favoriteButtonContainer'>
-            <Button label={favoriteButtonText} />
-          </div>
-        </div>
-      </div>
+        <ButtonContainer>
+          <Button
+            type='button'
+            isPrimary={isLearnEnabled}
+            label={detailButtonText}
+          />
+          <FavoriteButton>{outlineHeart}</FavoriteButton>
+          <FavoriteButtonContainer>
+            <Button type='button' label={favoriteButtonText} />
+          </FavoriteButtonContainer>
+        </ButtonContainer>
+      </OfferDetails>
     </OfferStyle>
   )
 }

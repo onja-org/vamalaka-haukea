@@ -92,7 +92,7 @@ const PageContainer = styled.div`
 
 const Container = styled.div`
   margin: 0 16px;
-  ${mediaQueriesPx('xl', null)`
+  ${mediaQueriesPx('lg', null)`
 		margin: 0 42px;
 	`}
 `
@@ -101,10 +101,9 @@ const FooterContainer = styled.div`
     margin: auto;
   }
 
-  @media (max-width: 920px) {
-    footer > div {
-      // padding: 0;
+  ${mediaQueriesPx(null, 'md')`
+   footer > div {
       min-height: 184px;
     }
-  }
+  `}
 `

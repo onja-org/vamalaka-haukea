@@ -42,15 +42,15 @@ const FooterContainer = styled('div')`
   details {
     padding: 0;
   }
-  @media (max-width: 640px) {
+  ${mediaQueriesPx(null, 'md')`
     flex-direction: column;
     gap: 21px;
-  }
+  `}
 
   ${mediaQueriesPx('lg', null)`
     padding-top: 320px;
   `}
-  ${mediaQueriesPx('xl', null)`
+  ${mediaQueriesPx('lg', null)`
     max-width: 1167px;
     min-width: auto;
     padding-bottom: 98px;

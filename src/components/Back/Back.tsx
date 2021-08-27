@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { fonts } from '../../globalStyles/fonts'
+import { Link } from 'react-router-dom'
 
 const backIcon = (
   <svg
@@ -19,7 +20,7 @@ const backIcon = (
 export interface BackProps {
   size?: 'small' | 'medium' | 'large'
   label: string
-  href: string
+  to: string
 }
 
 const BackLink = styled.a`
@@ -53,13 +54,13 @@ const BackLink = styled.a`
 export const Back: React.FC<BackProps> = ({
   size = 'medium',
   label,
-  href,
+  to,
   ...props
 }) => {
   return (
-    <BackLink type='button' href={href} {...props} className={`size--${size}`}>
+    <Link to='/'>
       {backIcon}
       <span>{label}</span>
-    </BackLink>
+    </Link>
   )
 }
