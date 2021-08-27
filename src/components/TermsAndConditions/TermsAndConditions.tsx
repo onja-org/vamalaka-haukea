@@ -8,6 +8,7 @@ export interface TermsAndConditionsProps {
   href: string
   serviceTerms: string
   isChecked?: boolean
+  onChangeCheckbox?: React.ChangeEventHandler<HTMLInputElement> | undefined
 }
 
 const TermsAndConditionsStyle = styled.label`

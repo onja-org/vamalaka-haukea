@@ -4,21 +4,32 @@ import { fonts } from '../../globalStyles/fonts'
 import Button from '../Button/Button'
 import { mediaQueriesPx } from '../../mediaQueries'
 export interface CallToActionProperties {
-    subTitle: string
-    title: string
+  subTitle: string
+  title: string
 }
 
 export const CallToAction: React.FC<CallToActionProperties> = ({
-  subTitle, title
+  subTitle,
+  title,
 }) => {
   return (
     <Container>
-        <Title>{title}</Title>
-        <SubTitle>{subTitle}</SubTitle>
-        <ActionButtonContainer>
-            <Button isPrimary ={true} label= 'Discover Products' isLoading ={false}/>
-            <Button isPrimary ={false} label= 'Become a member' isLoading ={false}/>
-        </ActionButtonContainer>
+      <Title>{title}</Title>
+      <SubTitle>{subTitle}</SubTitle>
+      <ActionButtonContainer>
+        <Button
+          type='button'
+          isPrimary={true}
+          label='Discover Products'
+          isLoading={false}
+        />
+        <Button
+          type='button'
+          isPrimary={false}
+          label='Become a member'
+          isLoading={false}
+        />
+      </ActionButtonContainer>
     </Container>
   )
 }
@@ -31,7 +42,7 @@ const Container = styled('div')`
   align-items: center;
 
   max-width: 1167px;
-  background: #FFFFFF;
+  background: #ffffff;
   ${mediaQueriesPx('lg', null)`
     padding-top: 63px;
     padding-bottom: 74px;
@@ -52,35 +63,35 @@ const Title = styled.h2`
   text-align: center;
   order: 2;
 
-  color: #041D42;
+  color: #041d42;
 
   ${mediaQueriesPx('lg', null)`
     font-size: 50px;
     line-height: 60px;
     max-width: 851px;
   `}
-`;
+`
 const SubTitle = styled('h3')`
-    ${fonts}
-    font-family: Garamond;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 22px;
-    margin: 0;
+  ${fonts}
+  font-family: Garamond;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 22px;
+  margin: 0;
 
-    display: flex;
-    align-items: flex-end;
-    text-align: center;
-    order: 1;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  order: 1;
 
-    color: #979797;
+  color: #979797;
 
-    ${mediaQueriesPx('lg', null)`
+  ${mediaQueriesPx('lg', null)`
       font-size: 30px;
       line-height: 34px;
   `}
-`;
+`
 
 const ActionButtonContainer = styled.div`
   display: flex;
@@ -93,4 +104,4 @@ const ActionButtonContainer = styled.div`
     flex-direction: row;
     gap: 47.8px;
   `}
-`;
+`

@@ -9,10 +9,10 @@ const Template: Story<BackProps> = (args) => <Back {...args} />
 export const Short = Template.bind({})
 Short.args = {
   label: 'Back',
-  href: '/',
+  to: '/',
 }
 export const Long = Template.bind({})
 Long.args = {
   label: 'Back to Homepage',
-  href: '/',
+  to: '/',
 }

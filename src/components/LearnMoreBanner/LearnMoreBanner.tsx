@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { fonts } from '../../globalStyles/fonts'
 import Button from '../Button/Button'
-import { mediaQueriesPx } from "../../mediaQueries";
+import { mediaQueriesPx } from '../../mediaQueries'
 
 export interface BannerProps {
   bannerHeading: string
@@ -10,25 +10,28 @@ export interface BannerProps {
   bannerImage: string
 }
 
-export const LearnMoreBanner: React.FC<BannerProps> = ({ bannerHeading,bannerDescription, bannerImage }) => {
+export const LearnMoreBanner: React.FC<BannerProps> = ({
+  bannerHeading,
+  bannerDescription,
+  bannerImage,
+}) => {
   return (
     <BannerContainer>
       <BannerFigure>
-        <BannerImage src={bannerImage} alt="features image intro"/>
+        <BannerImage src={bannerImage} alt='features image intro' />
       </BannerFigure>
       <Article>
         <BannerHeading>{bannerHeading}</BannerHeading>
-        <BannerDescription>
-          {bannerDescription}
-        </BannerDescription>
-        <Button 
+        <BannerDescription>{bannerDescription}</BannerDescription>
+        <Button
+          type='button'
           label={'Learn how it works'}
           onClick={() => {}}
           disabled={false}
           isPrimary={true}
           isLoading={false}
         />
-      </Article>  
+      </Article>
     </BannerContainer>
   )
 }
@@ -40,7 +43,7 @@ const BannerContainer = styled.header`
   ${mediaQueriesPx('lg', null)`
     flex-direction: row-reverse;
   `}
-`;
+`
 
 const BannerFigure = styled.figure`
   margin: 0;
@@ -49,14 +52,14 @@ const BannerFigure = styled.figure`
   ${mediaQueriesPx('lg', null)`
     margin-bottom: 0;
   `}
-`;
+`
 
 const BannerImage = styled.img`
   width: 100%;
   ${mediaQueriesPx('lg', null)`
     max-width: 614px;
   `}
-`;
+`
 
 const BannerHeading = styled.h2`
   font-family: Futura Std;
@@ -64,7 +67,7 @@ const BannerHeading = styled.h2`
   font-weight: normal;
   display: flex;
   align-items: center;
-  color: #041D42;
+  color: #041d42;
 
   ${mediaQueriesPx(null, 'lg')`
     font-weight: normal;
@@ -75,7 +78,7 @@ const BannerHeading = styled.h2`
     font-size: 50px;
     line-height: 60px;
   `}
-`;
+`
 
 const BannerDescription = styled.p`
   font-family: Garamond;
@@ -91,12 +94,12 @@ const BannerDescription = styled.p`
     font-size: 35px;
     line-height: 39px;
   `}
-`;
+`
 
 const Article = styled.article`
   ${mediaQueriesPx('md', null)`
     max-width: 618px;
   `}
-`;
+`
 
 export default LearnMoreBanner

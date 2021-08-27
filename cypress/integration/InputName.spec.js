@@ -8,9 +8,9 @@ describe('Input Name', () => {
   it('Has input component', () => {
     cy.contains('Input Name')
     cy.visit(
-      'http://localhost:6006/iframe.html?id=input-input-name--large-input&args=&viewMode=story'
+      'http://localhost:6006/iframe.html?id=input-input-name--empty-input&args=&viewMode=story'
     )
-    cy.get('label').contains('Your full name')
+    cy.get('label').contains('Email address')
     cy.get('input').should('have.attr', 'placeholder')
   })
 })
