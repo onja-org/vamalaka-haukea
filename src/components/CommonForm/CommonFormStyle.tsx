@@ -4,7 +4,7 @@ import { mediaQueriesPx } from '../../mediaQueries'
 export const FlexLayout = css`
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const FormMainContainer = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ export const FormMainContainer = styled.div`
       display: none;
     }
   `}
-`
+`;
 
 export const FormMainWrapper = styled.div`
   font-family: 'Futura Std', Arial, Helvetica, sans-serif;
@@ -41,13 +41,13 @@ export const FormMainWrapper = styled.div`
     flex: 50%;
     height: 100%;
   `}
-`
+`;
 
 export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 17px;
-`
+`;
 
 export const HeaderStyle = styled.div`
   display: none;
@@ -58,26 +58,26 @@ export const HeaderStyle = styled.div`
     padding-left: 13px;
     padding-right: 26px;
   `}
-`
+`;
 
 export const HeaderContent = styled.div`
   ${FlexLayout}
   align-items: flex-end;
   gap: 4px;
-`
+`;
 
 export const HeaderPage = styled.span`
   color: #bdbdbd;
   font-size: 14px;
   line-height: 17px;
-`
+`;
 
 export const HeaderInfo = styled.strong`
   color: #979797;
   font-weight: 650;
   font-size: 16px;
   line-height: 19px;
-`
+`;
 
 export const FormContentWrapper = styled.div`
   display: flex;
@@ -88,7 +88,7 @@ export const FormContentWrapper = styled.div`
     grid-template-rows: 66px 1fr;
     width: 100%;
   `}
-`
+`;
 
 export const FormStyle = styled.form`
   display: grid;
@@ -103,7 +103,8 @@ export const FormStyle = styled.form`
     max-width: 426px;
     margin: auto;
   `}
-`
+`;
+
 export const FormContent = styled.div`
   ${FlexLayout}
   gap: 14px;
