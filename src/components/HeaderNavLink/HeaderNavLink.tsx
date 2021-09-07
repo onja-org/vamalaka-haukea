@@ -1,4 +1,3 @@
-
 import { FC } from 'react'
 import styled from 'styled-components'
 import language from '../../assets/languages.svg'
@@ -9,39 +8,39 @@ import { fonts } from '../../globalStyles/fonts'
 import { Link } from 'react-router-dom'
 
 export const loggedIn = [
-	{ 
-		imgSrc: language, 
-		alt: 'Languages', 
-		text: 'english' 
+	{
+		imgSrc: language,
+		alt: 'Languages',
+		text: 'english',
 	},
 	{
 		imgSrc: transactions,
 		alt: 'Transactions',
-		text: 'Transactions'
+		text: 'Transactions',
 	},
 	{
 		imgSrc: signUp,
 		alt: 'signup',
-		text: 'signup'
-	}
+		text: 'signup',
+	},
 ]
 
 export const loggedOut = [
-	{ 
-	  imgSrc: language, 
-		alt: 'Languages', 
-		text: 'english' 
+	{
+		imgSrc: language,
+		alt: 'Languages',
+		text: 'english',
 	},
 	{
 		imgSrc: signIn,
 		alt: 'Log in',
-		text: 'Log in'
+		text: 'Log in',
 	},
 	{
 		imgSrc: signUp,
 		alt: 'signup',
-		text: 'signup'
-	}
+		text: 'signup',
+	},
 ]
 export interface ItemType {
 	imgSrc?: string
@@ -53,14 +52,22 @@ export interface LinkTypes {
 	item: Array<ItemType>
 }
 
-export const HeaderNavLink: FC<ItemType> = ({ text, imgSrc, alt }) => (
+export const HeaderNavLink: FC<ItemType> = ({ text, imgSrc, alt }) => {
+	const textToLowerCase = text.toLowerCase().replaceAll(/\s/g, '')
+	const linkText =
+		textToLowerCase === 'login' || textToLowerCase === 'signin'
+			? 'signin'
+			: textToLowerCase
+
+	return (
 		<Item>
-			<Link to={`/${text}`} data-testid={text}>
+			<Link to={`/${linkText}`} data-testid={text}>
 				<img src={imgSrc} alt={alt} />
 				<span>{text}</span>
 			</Link>
 		</Item>
-)
+	)
+}
 
 const Item = styled.li`
 	a {

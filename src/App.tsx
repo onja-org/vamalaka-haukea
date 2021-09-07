@@ -1,34 +1,24 @@
 import { Route, Switch } from 'react-router-dom'
-// import { sendQuery, getAdsQuery } from './graphqlHelper';
-// import { useSelector, useDispatch } from 'react-redux'
-
-// import {
-//   adsSelector,
-//   decrement,
-//   fetchAds,
-//   incrementByAmount,
-// } from './redux/slices/adsSlice'
-// import { useAppSelector, useAppDispatch } from './redux/hooks'
 import HomePage from './Pages/HomePage'
+
 import SignIn from './Pages/SignIn'
-import { RoleSelectOnboard } from './components/RoleSelectOnboard/RoleSelectOnboard'
+import SignUp from './Pages/SingUp'
+import OnboardingPage from './Pages/OnboardingPage'
 import Transactions from './Pages/Transactions'
 import NotFound from './Pages/NotFound'
-//import OnboardingPage from './Pages/OnboardingPage'
+import { Paths } from './components/helper/routerPaths'
 
 function App() {
-  // const count = useAppSelector((state) => state.ads.value)
-  // const ads = useSelector(adsSelector)
-
-  return (
-    <Switch>
-      <Route exact path='/' component={HomePage} />
-      <Route exact path='/signin' component={SignIn} />
-      <Route exact path='/transactions' component={Transactions} />
-      <Route exact path='/signup' component={RoleSelectOnboard} />
-      <Route component={NotFound} />
-    </Switch>
-  )
+	return (
+		<Switch>
+			<Route exact path={Paths.ONBOARDING} component={OnboardingPage} />
+			<Route exact path={Paths.HOME} component={HomePage} />
+			<Route exact path={Paths.SIGNIN} component={SignIn} />
+			<Route exact path={Paths.TRANSACTIONS} component={Transactions} />
+			<Route exact path={Paths.SIGNUP} component={SignUp} />
+			<Route component={NotFound} />
+		</Switch>
+	)
 }
 
 export default App
