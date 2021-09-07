@@ -57,7 +57,7 @@ export const HeaderNavLink: FC<ItemType> = ({ text, imgSrc, alt }) => (
 		<Item>
 			<Link to={`/${text}`} data-testid={text}>
 				<img src={imgSrc} alt={alt} />
-				<span>{alt}</span>
+				<span>{text}</span>
 			</Link>
 		</Item>
 )

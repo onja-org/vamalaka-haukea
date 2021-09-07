@@ -1,4 +1,3 @@
-import OnboardingPage from './OnboardingPage';
 import {LoginOptions} from '../components/CommonForm/CommonFormStyle'
 import {
   TopContainerStyles,
@@ -9,12 +8,14 @@ import {
   Wrapper,
   Form,
 } from '../components/RoleSelectOnboard/RoleSelectOnboardStyles';
+import { CommonPageContainer } from "../components/CommonPageContainer/CommonPageContainer";
 import InputName from '../components//InputName/InputName';
 import Button from '../components/Button/Button';
 import { Login } from '../components/Login/Login';
 import { LeftSide } from '../components/LeftSide/LeftSide';
 import { ReactComponent as GoogleIcon} from '../assets/google.svg';
 import { CommonForm } from '../components/CommonForm/CommonForm';
+
 const LoginFormContainer = MainContent;
 
 export type SigninProps = {
@@ -43,7 +44,7 @@ const SignIn: React.FC<SigninProps> = ({
   onClickLoginOnGoogle,
 }) =>   {
   return (
-    <OnboardingPage children ={
+    <CommonPageContainer>
       <TopContainerStyles>
         <MainContainer>
           <ImageContainer>
@@ -82,7 +83,8 @@ const SignIn: React.FC<SigninProps> = ({
             </Wrapper>
           </LoginFormContainer>
         </MainContainer>
-    </TopContainerStyles>}/>
+    </TopContainerStyles>
+    </CommonPageContainer>
   )
 }
 
