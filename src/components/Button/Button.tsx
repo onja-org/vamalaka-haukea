@@ -17,7 +17,6 @@ export interface ButtonProps {
 const FirstWrapper = styled.div`
   display: inline-block;
   position: relative;
-  background: rgba(252, 70, 43, 0.3);
 `
 const SecondWrapper = styled.div`
   display: inline-block;

@@ -142,7 +142,7 @@ export default function HomePage() {
   )
 }
 
-const Main = styled.main`
+const Main = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;

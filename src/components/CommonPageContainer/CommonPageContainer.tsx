@@ -90,7 +90,7 @@ const PageContainer = styled.div`
 	}
 `;
 
-const Container = styled.div`
+const Container = styled.main`
   margin: 0 16px;
   ${mediaQueriesPx('lg', null)`
 		margin: 0 42px;

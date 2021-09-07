@@ -13,42 +13,34 @@ export const EmptyInput = Template.bind({})
 EmptyInput.args = {
   placeholder: 'Invictus Innocent',
   label: 'Email address',
-  name: 'email',
-  type: 'email',
-  validInput: true,
-  inputValue: '',
-  onChange: () => null,
+  inputName: 'email',
+  inputType: 'email',
+  isValid: true,
 }
 
 export const ValidInput = Template.bind({})
 ValidInput.args = {
   placeholder: 'Invictus Innocent',
   label: 'Email address',
-  name: 'email',
-  type: 'email',
-  validInput: true,
-  inputValue: 'name@gmail.com',
-  onChange: () => null,
+  inputName: 'email',
+  inputType: 'email',
+  isValid: true,
 }
 
 export const InvalidInput = Template.bind({})
 InvalidInput.args = {
   placeholder: 'Invictus Innocent',
   label: 'Email address',
-  name: 'email',
-  type: 'email',
-  validInput: false,
-  inputValue: 'name@gmail',
-  onChange: () => null,
+  inputName: 'email',
+  inputType: 'email',
+  isValid: false,
 }
 
 export const PasswordInput = Template.bind({})
 PasswordInput.args = {
   placeholder: 'Invictus Innocent',
   label: 'Create password',
-  name: 'password',
-  type: 'password',
-  validInput: false,
-  inputValue: 'aaaaj',
-  onChange: () => null,
+  inputName: 'password',
+  inputType: 'password',
+  isValid: false,
 }

@@ -8,10 +8,4 @@ describe("Header NavLink Storybook", () => {
   it("should have an ul tag", () => {
     cy.get("a").should("have.attr", "href");
   });
-  it("should have English as a text", () => {
-    cy.visit(
-      "http://localhost:6006/iframe.html?id=header-navlink--logged-in&viewMode=story#language"
-    );
-    cy.contains("english", { timeout: 1000 });
-  });
 });

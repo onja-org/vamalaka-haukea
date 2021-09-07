@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { FormMainWrapper } from './CommonFormStyle'
 export type CommonFormProps = {
   children: JSX.Element

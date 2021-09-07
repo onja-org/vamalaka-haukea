@@ -4,7 +4,7 @@ import { mediaQueriesPx } from '../../mediaQueries'
 export const FlexLayout = css`
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const FormMainContainer = styled.div`
   display: flex;
@@ -17,13 +17,18 @@ export const FormMainContainer = styled.div`
       display: none;
     }
   `}
-`
+`;
 
 export const FormMainWrapper = styled.div`
   font-family: 'Futura Std', Arial, Helvetica, sans-serif;
   font-style: normal;
-  background-color: #fff;
-  max-width: 583px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 426px;
+  min-height: inherit;
+  
   ${mediaQueriesPx(null, 'sm')`
    width: 100%;
   `}
@@ -34,14 +39,15 @@ export const FormMainWrapper = styled.div`
   ${mediaQueriesPx('lg', null)`
     padding-top: 18px;
     flex: 50%;
+    height: 100%;
   `}
-`
+`;
 
 export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 17px;
-`
+`;
 
 export const HeaderStyle = styled.div`
   display: none;
@@ -52,26 +58,26 @@ export const HeaderStyle = styled.div`
     padding-left: 13px;
     padding-right: 26px;
   `}
-`
+`;
 
 export const HeaderContent = styled.div`
   ${FlexLayout}
   align-items: flex-end;
   gap: 4px;
-`
+`;
 
 export const HeaderPage = styled.span`
   color: #bdbdbd;
   font-size: 14px;
   line-height: 17px;
-`
+`;
 
 export const HeaderInfo = styled.strong`
   color: #979797;
   font-weight: 650;
   font-size: 16px;
   line-height: 19px;
-`
+`;
 
 export const FormContentWrapper = styled.div`
   display: flex;
@@ -82,7 +88,7 @@ export const FormContentWrapper = styled.div`
     grid-template-rows: 66px 1fr;
     width: 100%;
   `}
-`
+`;
 
 export const FormStyle = styled.form`
   display: grid;
@@ -97,7 +103,8 @@ export const FormStyle = styled.form`
     max-width: 426px;
     margin: auto;
   `}
-`
+`;
+
 export const FormContent = styled.div`
   ${FlexLayout}
   gap: 14px;
@@ -128,3 +135,17 @@ export const FormHeading = styled.h2`
    display: block;
   `}
 `
+
+export const LoginOptions = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 34px;
+  ${mediaQueriesPx('lg', null)`
+    flex-direction: row;
+    margin-bottom: unset;
+    gap: 26px;
+  `}
+`;
+

@@ -1,16 +1,9 @@
-import { Link } from "react-router-dom"
-import styled from "styled-components"
-
+import { RoleSelectOnboard } from '../components/RoleSelectOnboard/RoleSelectOnboard'
+import { CommonPageContainer } from "../components/CommonPageContainer/CommonPageContainer";
 export default function SignUp() {
   return (
-    <SignUpWrapper>
-      <h2>I am the sign up page</h2>
-      <Link to='/'>Go home</Link>
-    </SignUpWrapper>
+    <CommonPageContainer>
+      <RoleSelectOnboard/>
+    </CommonPageContainer>
   )
 }
-
-const SignUpWrapper = styled.div`
-  display: grid;
-  place-items: center;
-`

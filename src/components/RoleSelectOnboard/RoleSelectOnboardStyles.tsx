@@ -1,23 +1,9 @@
 import styled from "styled-components"
-
-const maxWidthMedia = '920px'
+import { mediaQueriesPx } from "../../mediaQueries"
 
 export const TopContainerStyles = styled.div`
-  background: linear-gradient(180deg, #FFF5F1 0%, #FEEAE3 45.27%, #FFDBCC 94.31%);
   width: 100%;
-  padding-bottom: 48px;
-  min-height: calc(318px + 164px + 59px);
-  @media (max-width: ${maxWidthMedia}) {
-    min-height: 444px;
-  }
-
-  @media (max-width: 420px) {
-    min-height: 544px;
-  }
-
-  @media (max-width: 360px) {
-    min-height: 644px;
-  }
+  min-height: 444px;
 `
 
 export const MainContainer = styled.div`
@@ -25,79 +11,89 @@ export const MainContainer = styled.div`
   transform: translateX(-50%);
   left: 50%;
   width: 90%;
-  padding-top: 47px;
+  padding-top: 41px;
   display: flex;
   justify-content: center;
-  @media (max-width: 920px) {
-    & > div:nth-child(1) {
-      display: none;
-    }
-
-  }
 `
 
-export const RoleOptionContainer = styled.div`
+export const MainContent = styled.div`
   position: relative;
-  background-color: #fff;
   max-width: 583px;
-  & > div {
-    max-width: 426px;
-    margin: auto;
-    padding: 14px;
-    div {
-      margin: 14px 0;
-    }
-  }
+  width: 100%;
+  background-color: #fff;
 
-  @media (min-width: ${maxWidthMedia}) {
+  ${mediaQueriesPx('lg', null)`
     flex-basis: 50%;
     padding: calc(113px - 14px * 2) 0;
-  }
+  `}
 `
 
-export const Container = styled.div`
-  position: relative;
-  footer > div {
-    margin-top: 0;
-    padding-top: 220px;
-  }
-  @media (max-width: ${maxWidthMedia}) {
-    footer > div > * {
-      display: none;
-    }
+export const Wrapper = styled.div`
+  height: 100%;
+  ${mediaQueriesPx(null, 'lg')`
+    height: auto;
+    min-height: 497px;
+    margin-inline: 17px;
+    margin-block: 45px 0px;
+  `}
+`;
 
-    footer > div {
-      padding: 0;
-      min-height: 184px;
-    }
+export const Frame = styled.div`
+  max-width: 426px;
+  margin: auto;
+  padding: 14px;
+  div {
+    margin: 14px 0;
   }
-`
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 35px;
+`;
 
 export const AccountContainer = styled.div`
   color: #979797;
-  @media (min-width: ${maxWidthMedia}) {
-    p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  ${mediaQueriesPx(null, 'lg')`
+    div:first-of-type {
+      margin-top: 48px;
+    }
+    div:last-of-type {
+        display: none;
+    }
+  `} 
+  ${mediaQueriesPx('lg', null)`
+    div {
       position: absolute;
       margin: 0;
       top: 22px;
-      right: 27px;
     }
-  }
-`
-
-export const HeaderContainer = styled.div`
-  padding: 10px 16px 11px 10px;
+    div:last-of-type {
+      right: 27px;
+      p:last-of-type {
+        display: none;
+      }
+    }
+  `}
 `
 export const ImageContainer = styled.div`
-  background-color: #041D42;
   margin: 0;
   padding: 0;
   max-width: 583px;
-  max-height: 601px;
+  height: 100%;
   overflow: hidden;
-  @media (min-width: ${maxWidthMedia}) {
+  ${mediaQueriesPx(null, 'lg')`
+    display: none;
+  `} 
+  ${mediaQueriesPx('lg', null)`
     flex-basis: 50%;
-  }
+  `}
   p {
     margin: 0;
   }
@@ -112,17 +108,4 @@ export const JoinUsHeader = styled.h3`
   align-items: center;
   color: #041D42;
   margin: calc(27px - 14px) 0 4px 0;
-`
-export const FooterContainer = styled.div`
-  footer > div {
-    max-width: 90%;
-    margin: auto;
-  }
-
-  @media (min-width: calc(583px * 2 + 60px)) {
-      footer > div {
-        max-width: calc(563px * 2);
-        margin: auto;
-      }
-    }
-`
+`;

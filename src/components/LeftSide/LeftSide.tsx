@@ -12,6 +12,8 @@ const Container = styled.div`
   background-repeat: no-repeat;
   width: 100%;
   max-width: 583.5px;
+  height: 100%;
+
   
   p {
     ${fonts}

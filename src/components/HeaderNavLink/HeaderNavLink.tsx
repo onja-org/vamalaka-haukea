@@ -35,11 +35,11 @@ export const loggedOut = [
 	{
 		imgSrc: signIn,
 		alt: 'Log in',
-		text: 'Log in'
+		text: 'login'
 	},
 	{
 		imgSrc: signUp,
-		alt: 'signup',
+		alt: 'Sign up',
 		text: 'signup'
 	}
 ]

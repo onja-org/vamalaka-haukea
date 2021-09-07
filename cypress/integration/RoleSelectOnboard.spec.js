@@ -20,9 +20,7 @@ describe('Buttons Screen', () => {
   it('has Header component', () => {
     cy.contains('Header')
     cy.visit('http://localhost:6006/iframe.html?id=components-roleselectonboard--role-select-on-board-story&args=&viewMode=story')
-    cy.get('h1').find('img').should('have.attr', 'src')
-    cy.get('label').find('input').should('have.attr', 'type', 'text')
-    cy.get('ul').children('li').find('a').should('have.attr', 'href')
+    cy.get('img').should('have.attr', 'src')
   })
 
   it('has Login component', () => {
