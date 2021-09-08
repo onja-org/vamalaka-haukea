@@ -30,6 +30,7 @@ const StepNum = styled.p`
   font-size: 14px;
   line-height: 17px;
   color: #bdbdbd;
+  margin-top: 4px;
   padding: 0 0 4px 0;
   text-transform: uppercase;
 `

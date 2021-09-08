@@ -1,4 +1,4 @@
-import {LoginOptions} from '../components/CommonForm/CommonFormStyle'
+import {ButtonContainer} from '../components/CommonForm/CommonFormStyle'
 import {
   TopContainerStyles,
   MainContainer,
@@ -61,7 +61,7 @@ const SignIn: React.FC<SigninProps> = ({
                     <InputName inputType='email'  placeholder="Enter email address" inputName="email" isValid={true} label="Email address"/>
                     <InputName inputType='password' placeholder="Enter a password" inputName="password" isValid={true} label="Create password" />
                   </Form>
-                  <LoginOptions>
+                  <ButtonContainer>
                     <Button 
                       type='button'
                       label="Login"
@@ -77,7 +77,7 @@ const SignIn: React.FC<SigninProps> = ({
                       isPrimary={false}
                       icon={<GoogleIcon/>}
                       isLoading={false}/>
-                  </LoginOptions>
+                  </ButtonContainer>
                 </>
             }/>
             </Wrapper>

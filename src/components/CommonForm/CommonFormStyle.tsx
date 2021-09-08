@@ -111,17 +111,26 @@ export const FormContent = styled.div`
 `
 
 export const ButtonContainer = styled.div`
-  ${FlexLayout}
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   gap: 15px;
-  button {
-    font-size: 16px;
-  }
+  align-items: center;
+  margin-bottom: 34px;
   ${mediaQueriesPx('lg', null)`
     flex-direction: row;
-    align-self: unset;
-    width: unset;
+    margin-bottom: unset;
+    gap: 26px;
   `}
+  & > div > div button {
+    font-size: 16px;
+    line-height: 18px;
+    padding: 9px 14px 8px;
+    ${mediaQueriesPx('md', 'lg')`
+      font-size: 24px;
+      line-height: 27px;
+      padding: 12px 14px 11px;
+    `}
+  }
 `
 export const FormHeading = styled.h2`
   text-align: left;
@@ -135,17 +144,4 @@ export const FormHeading = styled.h2`
    display: block;
   `}
 `
-
-export const LoginOptions = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-  margin-bottom: 34px;
-  ${mediaQueriesPx('lg', null)`
-    flex-direction: row;
-    margin-bottom: unset;
-    gap: 26px;
-  `}
-`;
 

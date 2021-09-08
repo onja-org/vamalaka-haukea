@@ -108,37 +108,38 @@ export default function HomePage() {
     dispatch(fetchCategories([]))
   }, [dispatch]);
 
+  
   return (
         <CommonPageContainer>
-            <Main>
-                <LearnMoreBanner bannerHeading="Madagascars peer-to-peer e-commerce platform" bannerDescription = "Purchase high-quality products made by the people that sell them. By cutting out middlemen, you know exactly where your purchase is from and how it was made." bannerImage={ImageBanner} />
-                <TopCategories categories={categories} status={status} heading="Top Categories"/>
-                <OfferList>
-                  {offers.map(offer => {
-                    return <Offer key={offer.id} 
-                      imageForOffer ={Image}
-                      imageDescription = {offer.imageDescription}
-                      imageForRating=''
-                      offerName= {offer.offerName}
-                      currency= {offer.currency}
-                      amount={offer.amount}
-                      unit= {offer.unit}
-                      star= {offer.star}
-                      ratingDescription = {offer.ratingDescription}
-                      amountOfProduct={offer.amountOfProduct}
-                      offerDescription={offer.offerDescription}
-                      isLearnEnabled={offer.isLearnEnabled}
-                      isFavourited= {offer.isFavourited}
-                      detailButtonText= {offer.detailButtonText}
-                      favoriteButtonText= {offer.favoriteButtonText}
-                      profile= {offer.profile}
-                      name={offer.name}
-                      location={offer.location}/>
-                    })}
-                </OfferList>
-                <CallToAction title="Discover amazing products and profit from a truly fair market:" subTitle="This is a subtitle that is very informative"/>
-            </Main>
-        </CommonPageContainer>
+          <Main>
+            <LearnMoreBanner bannerHeading="Madagascars peer-to-peer e-commerce platform" bannerDescription = "Purchase high-quality products made by the people that sell them. By cutting out middlemen, you know exactly where your purchase is from and how it was made." bannerImage={ImageBanner} />
+            <TopCategories categories={categories} status={status} heading="Top Categories"/>
+            <OfferList>
+              {offers.map(offer => {
+                return <Offer key={offer.id} 
+                  imageForOffer ={Image}
+                  imageDescription = {offer.imageDescription}
+                  imageForRating=''
+                  offerName= {offer.offerName}
+                  currency= {offer.currency}
+                  amount={offer.amount}
+                  unit= {offer.unit}
+                  star= {offer.star}
+                  ratingDescription = {offer.ratingDescription}
+                  amountOfProduct={offer.amountOfProduct}
+                  offerDescription={offer.offerDescription}
+                  isLearnEnabled={offer.isLearnEnabled}
+                  isFavourited= {offer.isFavourited}
+                  detailButtonText= {offer.detailButtonText}
+                  favoriteButtonText= {offer.favoriteButtonText}
+                  profile= {offer.profile}
+                  name={offer.name}
+                  location={offer.location}/>
+                })}
+            </OfferList>
+            <CallToAction title="Discover amazing products and profit from a truly fair market:" subTitle="This is a subtitle that is very informative"/>
+          </Main>
+      </CommonPageContainer>
   )
 }
 
