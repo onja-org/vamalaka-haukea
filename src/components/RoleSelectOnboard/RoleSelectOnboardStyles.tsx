@@ -26,7 +26,59 @@ export const MainContent = styled.div`
     flex-basis: 50%;
     padding: calc(113px - 14px * 2) 0;
   `}
-`
+`;
+
+export const AccountContainer = styled.div`
+  color: #979797;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: auto;
+  max-width: 426px;
+  padding:0px 14px;
+
+  ${mediaQueriesPx(null, 'sm')`
+    width: 100%;
+  `}
+
+  ${mediaQueriesPx('sm', 'lg')`
+    width: 70%;
+  `}
+  
+  ${mediaQueriesPx(null, 'lg')`
+    & > a {
+      margin-bottom: 48px;
+    }
+    div:first-of-type {
+      margin-bottom: 48px;
+    }
+    div:last-of-type {
+        display: none;
+    }
+  `} 
+  ${mediaQueriesPx('lg', null)`
+    & > a {
+      position: absolute;
+      margin: 0;
+      top: 22px;
+    }
+    div:first-of-type {
+      padding: 0;
+    }
+    div {
+      position: absolute;
+      margin: 0;
+      top: 22px;
+    }
+    div:last-of-type {
+      right: 27px;
+      p:last-of-type {
+        display: none;
+      }
+    }
+  `}
+`;
 
 export const Wrapper = styled.div`
   height: 100%;
@@ -54,34 +106,6 @@ export const Form = styled.form`
   margin-bottom: 35px;
 `;
 
-export const AccountContainer = styled.div`
-  color: #979797;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
-  ${mediaQueriesPx(null, 'lg')`
-    div:first-of-type {
-      margin-top: 48px;
-    }
-    div:last-of-type {
-        display: none;
-    }
-  `} 
-  ${mediaQueriesPx('lg', null)`
-    div {
-      position: absolute;
-      margin: 0;
-      top: 22px;
-    }
-    div:last-of-type {
-      right: 27px;
-      p:last-of-type {
-        display: none;
-      }
-    }
-  `}
-`
 export const ImageContainer = styled.div`
   margin: 0;
   padding: 0;

@@ -23,7 +23,7 @@ export interface BackProps {
   to: string
 }
 
-const BackLink = styled.a`
+const BackLink = styled(Link)`
   ${fonts}
   ​
   --font-size: 16px;
@@ -58,9 +58,9 @@ export const Back: React.FC<BackProps> = ({
   ...props
 }) => {
   return (
-    <Link to='/'>
+    <BackLink to='/'>
       {backIcon}
       <span>{label}</span>
-    </Link>
+    </BackLink>
   )
 }

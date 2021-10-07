@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import { fonts } from '../../globalStyles/fonts'
 import checkedSvg from './checked.svg'
@@ -75,6 +75,8 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
   isChecked,
   ...props
 }) => {
+  const [agreeToTheTerm, setAgreeToTheTerm] = useState(isChecked);
+
   return (
     <TermsAndConditionsStyle {...props}>
       <Checkbox>
@@ -83,7 +85,8 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
           name='termAndCondition'
           className='checkbox'
           id='termAndCondition'
-          checked={isChecked}
+          defaultChecked={isChecked}
+          onChange={() => setAgreeToTheTerm(!agreeToTheTerm)}
         />
         <span className='checkMark'></span>
       </Checkbox>

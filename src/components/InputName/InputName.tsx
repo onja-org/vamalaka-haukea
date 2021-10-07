@@ -10,10 +10,12 @@ export interface InputProps {
   inputType: string
   isValid: boolean
   prop?: boolean
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  erroMessage?: string
 }
 
 interface styledPropType {
-  errorMessage: boolean
+  isError: boolean
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -22,12 +24,17 @@ export const Input: React.FC<InputProps> = ({
   inputName,
   inputType,
   isValid,
+  onChange,
+  erroMessage
 }) => {
   const [showPassword, setShowpassword] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
-  function inputValueHandler(e: string) {
-    setInputValue(e);
+  function inputValueHandler(e: any) {
+    setInputValue(e.target.value);
+    if(onChange) {
+      onChange(e);
+    }
   }
   return (
     <InputContainer>
@@ -37,7 +44,7 @@ export const Input: React.FC<InputProps> = ({
           <Label>{label}</Label>
           {!isValid && 
           <ErrorMessage>
-            {inputName} invalid
+            {erroMessage}
           </ErrorMessage>}
         </LabelContainer>
         
@@ -46,13 +53,13 @@ export const Input: React.FC<InputProps> = ({
           placeholder={placeholder}
           type={showPassword ? 'text' : inputType}
           name={inputName}
-          onChange={(e: any) => inputValueHandler(e.target.value)}
-          errorMessage={!isValid}
+          onChange={inputValueHandler}
+          isError={!isValid}
           autoComplete='off'
           required
         />
-        {inputName === 'password' ? (
-          <Button errorMessage={!isValid} type='button' onClick={() => setShowpassword(!showPassword)}>
+        {inputType === 'password' ? (
+          <Button isError={!isValid} type='button' onClick={() => setShowpassword(!showPassword)}>
             {showPassword ? 'hide' : 'show'}
           </Button>
         ) : (
@@ -77,7 +84,6 @@ const inputStyles = css`
   display: flex;
   align-items: center;
   color: #979797;
-  text-transform: capitalize;
   outline: none;
   border: 1px solid #041d42;
   border-radius: 6px;
@@ -102,7 +108,6 @@ const ErrorMessage = styled.small`
   color: #FC462B;
   font-size: 16px;
   line-hight: 19px;
-  text-transform: capitalize;
 `;
 
 const InputElement = styled.input<styledPropType>`
@@ -115,8 +120,8 @@ const InputElement = styled.input<styledPropType>`
   padding-bottom: 12px;
   padding-right: 34px;
   ${inputStyles}
-  border: 1px solid ${({errorMessage}) => errorMessage ? '#FC462B' : '#041d42'};
-  color: ${({errorMessage}) => errorMessage ? '#FC462B' : '#041d42'};
+  border: 1px solid ${({isError}) => isError ? '#FC462B' : '#041d42'};
+  color: ${({isError}) => isError ? '#FC462B' : '#041d42'};
   &:focus {
     box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
   }
@@ -151,7 +156,7 @@ const Button = styled.button<styledPropType>`
   cursor: pointer;
   bottom: 13px;
   right: 17px;
-  color: ${({errorMessage}) => errorMessage ? '#FC462B' : '#041d42'};
+  color: ${({isError}) => isError ? '#FC462B' : '#041d42'};
   @media (min-width: 400px) {
     right: 38px;
   }

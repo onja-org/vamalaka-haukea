@@ -16,6 +16,8 @@ EmptyInput.args = {
   inputName: 'email',
   inputType: 'email',
   isValid: true,
+  onChange: () => {},
+  erroMessage: ''
 }
 
 export const ValidInput = Template.bind({})
@@ -25,6 +27,8 @@ ValidInput.args = {
   inputName: 'email',
   inputType: 'email',
   isValid: true,
+  onChange: () => {},
+  erroMessage: ''
 }
 
 export const InvalidInput = Template.bind({})
@@ -34,6 +38,8 @@ InvalidInput.args = {
   inputName: 'email',
   inputType: 'email',
   isValid: false,
+  onChange: () => {},
+  erroMessage: ''
 }
 
 export const PasswordInput = Template.bind({})
@@ -43,4 +49,6 @@ PasswordInput.args = {
   inputName: 'password',
   inputType: 'password',
   isValid: false,
+  onChange: () => {},
+  erroMessage: ''
 }
