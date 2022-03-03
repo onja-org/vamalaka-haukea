@@ -27,4 +27,3 @@ jobs:
     - run: yarn install
     - run: yarn run test
     - run: yarn run cypress:ci
-    - run: yarn run build
